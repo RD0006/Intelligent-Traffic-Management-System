@@ -2,8 +2,12 @@
 import numpy as np
 import pandas as pd
 
+#setting ROAD_ID
+ROAD_ID = 1
+
 # generating timestamps for the entire year of 2025 at 5-minute intervals
-timestamps = pd.date_range(start = "2025-01-01", end = "2025-12-31", freq = "5min")
+# timestamps = pd.date_range(start = "2025-01-01", end = "2025-12-31", freq = "5min")
+timestamps = pd.date_range(start = "2026-02-01", end = "2026-02-28", freq = "10min")
 
 # initializing list to store traffic data
 data = []
@@ -37,8 +41,6 @@ for time in timestamps:
 
     if weather == "rain":
         base_traffic += 10
-    elif weather == "snow":
-        base_traffic += 15
 
     # simulating special events (concerts, festivals, sports, etc)
     event = np.random.choice(
@@ -54,12 +56,12 @@ for time in timestamps:
     base_traffic = max(base_traffic, 10)
 
     # appending data to the data list
-    data.append([time, day, weather, event, base_traffic])
+    data.append([ROAD_ID, time, day, weather, event, base_traffic])
 
 # converting list into DataFrame
 df = pd.DataFrame(
     data, 
-    columns = ["Timestamp", "Day_of_Week", "Weather", "Event", "Traffic_Volume"]
+    columns = ["road_id", "timestamp", "day_of_week", "weather", "event", "traffic_volume"]
 )
 
 # exporting DataFrame as a CSV file

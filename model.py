@@ -13,28 +13,28 @@ import matplotlib.pyplot as plt
 # PREPROCESSING
 
 # loading dataset
-df = pd.read_csv("traffic_data.csv", parse_dates = ["Timestamp"])
+df = pd.read_csv("traffic_data.csv", parse_dates = ["timestamp"])
 
 # extracting features 
-df["Hour"] = df["Timestamp"].dt.hour
-df["Month"] = df["Timestamp"].dt.month
+df["hour"] = df["timestamp"].dt.hour
+df["month"] = df["timestamp"].dt.month
 
 # features
-features = ["Hour", "Day_of_Week", "Month", "Weather", "Event"]
-target = ["Traffic_Volume"]
+features = ["hour", "day_of_week", "month", "weather", "event"]
+target = ["traffic_volume"]
 
 # encoding weather data
-weather_encoded = pd.get_dummies(df["Weather"], prefix = "Weather")
+weather_encoded = pd.get_dummies(df["weather"], prefix = "weather")
 df = pd.concat([df, weather_encoded], axis = 1)
-df.drop("Weather", axis = 1, inplace = True)
+df.drop("weather", axis = 1, inplace = True)
 
 # scaling features to range [0, 1]
 feature_scaler = MinMaxScaler()
-scaled_features = feature_scaler.fit_transform(df.drop(["Timestamp", "Traffic_Volume"], axis = 1))
+scaled_features = feature_scaler.fit_transform(df.drop(["timestamp", "traffic_volume"], axis = 1))
 joblib.dump(feature_scaler, "feature_scaler.save")
 
 target_scaler = MinMaxScaler()
-scaled_target = target_scaler.fit_transform(df[["Traffic_Volume"]])
+scaled_target = target_scaler.fit_transform(df[["traffic_volume"]])
 joblib.dump(target_scaler, "target_scaler.save")
 
 # creating sequences
@@ -107,3 +107,29 @@ plt.xlabel("Time Steps")
 plt.ylabel("Normalized Traffic Volume")
 plt.legend()
 plt.show()
+
+def predict_traffic(hour, day_of_week=1, month=1, weather="Clear", event="None"):
+    # Create feature vector
+    feature_names = ["hour", "day_of_week", "month"]
+    features = [hour, day_of_week, month]
+
+    # One-hot encode weather (must match training columns)
+    weather_columns = [col for col in feature_scaler.feature_names_in_ if col.startswith("weather_")]
+    weather_vector = [1 if f"weather_{weather}" == col else 0 for col in weather_columns]
+    
+    # Combine all features
+    features = np.array(features + weather_vector).reshape(1, -1)
+    
+    # Scale features
+    scaled_features = feature_scaler.transform(features)
+    
+    # Prepare sequence for LSTM
+    X_seq = np.tile(scaled_features, (12, 1))  # replicate last known features
+    
+    X_seq = X_seq.reshape(1, 12, X_seq.shape[1])
+    
+    # Predict and inverse transform
+    y_scaled = model.predict(X_seq)
+    y_pred = target_scaler.inverse_transform(y_scaled)
+    
+    return float(y_pred[0][0])
