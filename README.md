@@ -59,7 +59,7 @@ This project is licensed under the **MIT License**.
 
 ## Collaborators
 - Radhika Diwan
-- Raushan Singh
+- Raushan Kumar
 - Satyam Chaudhary
 - Shreyansh Srivastava
 - Utsav Lal
