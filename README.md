@@ -1,7 +1,5 @@
 # Intelligent-Traffic-Management-System
 
-# Intelligent Traffic Management System (ITMS)
-
 ## Overview
 The **Intelligent Traffic Management System (ITMS)** is a smart traffic prediction and management platform that integrates **LSTM-based traffic forecasting**, **traffic analytics**, and **real-time visualization** for urban roads. The system predicts traffic volume based on historical data, weather, and special events, and adjusts traffic signal timings dynamically. It features a web interface powered by Flask and a desktop dashboard using Java Swing. 
 
