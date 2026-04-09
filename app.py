@@ -1,9 +1,8 @@
 from flask import Flask, render_template, request, jsonify
-from model import predict_traffic  # Your Python LSTM prediction function
+from model import predict_traffic  
 
 app = Flask(__name__)
 
-# Function to calculate signal timing based on predicted traffic
 def calculate_signal_time(traffic):
     if traffic > 100:
         return {"green": 60, "red": 30}
@@ -12,7 +11,7 @@ def calculate_signal_time(traffic):
     else:
         return {"green": 20, "red": 60}
 
-# ---- Web UI Route ----
+# Web UI Route 
 @app.route('/', methods=['GET', 'POST'])
 def index():
     traffic = None
@@ -24,8 +23,7 @@ def index():
         day_of_week = int(request.form.get('day_of_week', 0))
         month = int(request.form.get('month', 1))
         
-        # Optional: weather/event input as 0 if not provided
-        # You can extend this later
+        # Weather/event input as 0 if not provided
         weather_vector = None
         event = 0
 
@@ -35,7 +33,7 @@ def index():
 
     return render_template('index.html', traffic=traffic, signal_time=signal_time)
 
-# ---- API Route for Java Swing or other clients ----
+# API Route for Java Swing or other clients 
 @app.route('/predict', methods=['GET'])
 def api_predict():
     try:
@@ -43,7 +41,7 @@ def api_predict():
         day_of_week = int(request.args.get('day_of_week', 0))
         month = int(request.args.get('month', 1))
         
-        # Optional: weather/event input as 0 if not provided
+        # Weather/event input as 0 if not provided
         weather_vector = None
         event = 0
 
@@ -59,6 +57,6 @@ def api_predict():
     except Exception as e:
         return jsonify({"error": str(e)}), 400
 
-# ---- Run Flask app ----
+# Run Flask app
 if __name__ == '__main__':
     app.run(debug=True)
