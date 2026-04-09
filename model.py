@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 # PREPROCESSING
 
 # loading dataset
-df = pd.read_csv("traffic_data.csv", parse_dates = ["timestamp"])
+df = pd.read_csv("traffic_data_for_model.csv", parse_dates = ["timestamp"])
 
 # extracting features 
 df["hour"] = df["timestamp"].dt.hour

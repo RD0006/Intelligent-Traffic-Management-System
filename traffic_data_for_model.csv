@@ -1,4 +1,4 @@
-Timestamp,Day_of_Week,Weather,Event,Traffic_Volume
+timestamp,day_of_week,weather,event,traffic_volume
 2025-01-01 00:00:00,2,rain,0,47
 2025-01-01 00:05:00,2,rain,0,36
 2025-01-01 00:10:00,2,clear,1,69
