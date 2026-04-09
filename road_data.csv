@@ -1,0 +1,101 @@
+road_id,road_name,location
+1,Mahatma Gandhi Road,Delhi
+2,Brigade Road,Bangalore
+3,Marine Drive,Mumbai
+4,Park Street,Kolkata
+5,Anna Salai,Chennai
+6,Banjara Hills Road,Hyderabad
+7,Law Garden Road,Ahmedabad
+8,FC Road,Pune
+9,Ashram Road,Ahmedabad
+10,Janpath Road,Delhi
+11,Ring Road,Delhi
+12,Outer Ring Road,Delhi
+13,Connaught Place Road,Delhi
+14,Rajpath Road,Delhi
+15,Chandni Chowk Road,Delhi
+16,Karol Bagh Road,Delhi
+17,Sarojini Nagar Road,Delhi
+18,Lajpat Nagar Road,Delhi
+19,Rohini Road,Delhi
+20,Dwarka Road,Delhi
+21,MG Road,Bangalore
+22,Commercial Street,Bangalore
+23,Residency Road,Bangalore
+24,Indiranagar 100ft Road,Bangalore
+25,Whitefield Main Road,Bangalore
+26,Electronic City Road,Bangalore
+27,Bannerghatta Road,Bangalore
+28,Yelahanka Road,Bangalore
+29,Jayanagar Road,Bangalore
+30,Koramangala Road,Bangalore
+31,Linking Road,Mumbai
+32,SV Road,Mumbai
+33,Colaba Causeway,Mumbai
+34,Peddar Road,Mumbai
+35,Carter Road,Mumbai
+36,Hill Road,Mumbai
+37,Juhu Tara Road,Mumbai
+38,LBS Marg,Mumbai
+39,Andheri Kurla Road,Mumbai
+40,Ghatkopar Mankhurd Link Road,Mumbai
+41,Camac Street,Kolkata
+42,College Street,Kolkata
+43,Elgin Road,Kolkata
+44,Theatre Road,Kolkata
+45,Salt Lake Road,Kolkata
+46,Howrah Bridge Road,Kolkata
+47,VIP Road,Kolkata
+48,EM Bypass,Kolkata
+49,New Town Road,Kolkata
+50,Alipore Road,Kolkata
+51,Mount Road,Chennai
+52,OMR Road,Chennai
+53,ECR Road,Chennai
+54,T Nagar Road,Chennai
+55,Velachery Road,Chennai
+56,Guindy Road,Chennai
+57,Adyar Road,Chennai
+58,Porur Road,Chennai
+59,Anna Nagar Road,Chennai
+60,Chromepet Road,Chennai
+61,Hitech City Road,Hyderabad
+62,Jubilee Hills Road,Hyderabad
+63,Gachibowli Road,Hyderabad
+64,Madhapur Road,Hyderabad
+65,Begumpet Road,Hyderabad
+66,Secunderabad Road,Hyderabad
+67,Charminar Road,Hyderabad
+68,Kukatpally Road,Hyderabad
+69,Mehdipatnam Road,Hyderabad
+70,Tolichowki Road,Hyderabad
+71,CG Road,Ahmedabad
+72,SG Highway,Ahmedabad
+73,Satellite Road,Ahmedabad
+74,Vastrapur Road,Ahmedabad
+75,Maninagar Road,Ahmedabad
+76,Navrangpura Road,Ahmedabad
+77,Ellis Bridge Road,Ahmedabad
+78,Bopal Road,Ahmedabad
+79,Naranpura Road,Ahmedabad
+80,Chandkheda Road,Ahmedabad
+81,JM Road,Pune
+82,SB Road,Pune
+83,Baner Road,Pune
+84,Hinjewadi Road,Pune
+85,Koregaon Park Road,Pune
+86,MG Road,Pune
+87,Camp Road,Pune
+88,Wakad Road,Pune
+89,Aundh Road,Pune
+90,Katraj Road,Pune
+91,Patel Nagar Road,Delhi
+92,Malleshwaram Road,Bangalore
+93,Dadar TT Road,Mumbai
+94,Shyambazar Road,Kolkata
+95,Mylapore Road,Chennai
+96,Ameerpet Road,Hyderabad
+97,Paldi Road,Ahmedabad
+98,Hadapsar Road,Pune
+99,Okhla Road,Delhi
+100,Hebbal Road,Bangalore

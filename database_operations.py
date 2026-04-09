@@ -22,6 +22,19 @@ with open('traffic_data.csv', 'r') as file:
             VALUES (%s, %s, %s, %s, %s, %s)
         """, row)
 
+
+with open('road_data.csv', 'r') as file:
+    csv_reader = csv.reader(file)
+    
+    next(csv_reader)
+    
+    for row in csv_reader:
+        cursor.execute("""
+            INSERT INTO Roads
+            (road_id, road_name, location)
+            VALUES (%s, %s, %s)
+        """, row)
+
 conn.commit()
 
 cursor.close()
