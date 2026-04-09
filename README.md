@@ -61,5 +61,5 @@ This project is licensed under the **MIT License**.
 - Radhika Diwan
 - Raushan Singh
 - Satyam Chaudhary
-- Shreyansh Shrivastava
-- Utsav Shrivastava
+- Shreyansh Srivastava
+- Utsav Lal
