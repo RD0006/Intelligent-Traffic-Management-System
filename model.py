@@ -56,7 +56,7 @@ X_train, X_test, y_train, y_test = train_test_split(
 
 
 # LSTM MODEL
-
+"""
 # building model
 model = Sequential()
 model.add(LSTM(50, activation = "relu", input_shape = (X_train.shape[1], X_train.shape[2])))
@@ -77,7 +77,7 @@ history = model.fit(
 
 # saving model
 model.save("lstm.keras")
-
+"""
 # loading model and scalers
 model = load_model("lstm.keras")
 feature_scaler = joblib.load("feature_scaler.save")

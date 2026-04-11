@@ -1,6 +1,5 @@
 import java.util.*;
 
-// ===== Traffic Record Class =====
 class TrafficRecord {
     String roadId;
     String timestamp;
@@ -25,57 +24,49 @@ class TrafficRecord {
     }
 }
 
-// ===== Traffic Data Structures =====
 public class TrafficDataStructures {
 
-    // 1. List of all traffic records
+    // List of all traffic records
     private List<TrafficRecord> trafficRecords = new ArrayList<>();
 
-    // 2. Map: Road ID → Current Vehicle Count
+    // Map of Road ID → Current Vehicle Count
     private Map<String, Integer> roadVehicleMap = new HashMap<>();
 
-    // 3. Queue for vehicles waiting at signals per road
+    // Queue for vehicles waiting at signals depending upon road
     private Map<String, Queue<String>> roadVehicleQueue = new HashMap<>();
 
-    // 4. Graph: Road Network (Adjacency List)
+    // Graph for Road Network (Adjacency List)
     private Map<String, List<String>> roadGraph = new HashMap<>();
 
-    // ===== Constructor to preload roads =====
     public TrafficDataStructures(List<String> initialRoads) {
         for (String road : initialRoads) {
             addRoad(road);
         }
     }
 
-    // ===== Add new traffic record =====
     public synchronized void addRecord(TrafficRecord record) {
         trafficRecords.add(record);
         updateVehicleCount(record.roadId, record.vehicleCount);
     }
 
-    // ===== Add road to road network =====
     public void addRoad(String roadId) {
         roadGraph.putIfAbsent(roadId, new ArrayList<>());
         roadVehicleQueue.putIfAbsent(roadId, new LinkedList<>());
         roadVehicleMap.putIfAbsent(roadId, 0);
     }
 
-    // ===== Connect roads =====
     public void connectRoads(String road1, String road2) {
         roadGraph.get(road1).add(road2);
         roadGraph.get(road2).add(road1); // bidirectional
     }
 
-    // ===== Get vehicle count for road =====
     public int getVehicleCount(String roadId) {
         return roadVehicleMap.getOrDefault(roadId, 0);
     }
 
-    // ===== Update vehicle count from LSTM prediction =====
     public synchronized void updateVehicleCount(String roadId, int vehicleCount) {
         roadVehicleMap.put(roadId, vehicleCount);
 
-        // Update queue for simulation
         Queue<String> queue = roadVehicleQueue.getOrDefault(roadId, new LinkedList<>());
         queue.clear();
         for (int i = 0; i < vehicleCount; i++) {
@@ -84,7 +75,6 @@ public class TrafficDataStructures {
         roadVehicleQueue.put(roadId, queue);
     }
 
-    // ===== Pop vehicle from queue =====
     public synchronized String popVehicle(String roadId) {
         Queue<String> queue = roadVehicleQueue.get(roadId);
         if (queue != null && !queue.isEmpty()) {
@@ -93,7 +83,6 @@ public class TrafficDataStructures {
         return null;
     }
 
-    // ===== Get congestion level =====
     public String getCongestionLevel(String roadId) {
         int count = getVehicleCount(roadId);
         if (count > 100) return "High";
@@ -101,14 +90,12 @@ public class TrafficDataStructures {
         else return "Low";
     }
 
-    // ===== Print road network =====
     public void printRoadGraph() {
         for (String road : roadGraph.keySet()) {
             System.out.println(road + " → " + roadGraph.get(road));
         }
     }
 
-    // ===== Get traffic records by road =====
     public List<TrafficRecord> getRecordsByRoad(String roadId) {
         List<TrafficRecord> list = new ArrayList<>();
         for (TrafficRecord record : trafficRecords) {
@@ -119,7 +106,6 @@ public class TrafficDataStructures {
         return list;
     }
 
-    // ===== Get all roads =====
     public Set<String> getAllRoads() {
         return roadVehicleMap.keySet();
     }
